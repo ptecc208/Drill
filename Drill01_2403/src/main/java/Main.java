@@ -16,6 +16,8 @@ public class Main {
         * str.equalsIgnoreCase"yes" //문자열 str의 내용이 "yes"일 때 (대소문자 구분 X)
         * */
 
+        System.out.println("------------학점 보여주기------------");
+
         int score =  0;
         char grade = ' ', opt = 0;
 
@@ -56,6 +58,8 @@ public class Main {
 
         System.out.println("------------------------");
 
+
+        // 양수인지 음수인지
 //        if (num >= 0 ) {
 //            if (num !=0) {
 //                sign = '+';
@@ -108,5 +112,7 @@ public class Main {
         System.out.println(str4);
 
         System.out.println("------------------------");
+
+
         }
     }
