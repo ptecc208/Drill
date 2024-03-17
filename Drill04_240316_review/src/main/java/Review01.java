@@ -1,6 +1,8 @@
 import java.io.*;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.Arrays;
+
 public class Review01 {
 
     public static void main(String[] args) {
@@ -183,42 +185,113 @@ public class Review01 {
 //        score[0] = 50; // 각 빈 공간에 값을 초기화
 
         //for 문으로 배열을 순차적으로 순회에 값을 넣어주는 방법도 있다.
-        for (int k = 0; k < score.length; k++) {
-            score[k] = k + 10;
-        }
-        for (int k = 0; k < score.length; k++) {
-            System.out.print(score[k] + " ");
-        }
-        System.out.println();
+//        for (int k = 0; k < score.length; k++) {
+//            score[k] = k + 10;
+//        }
+//        for (int k = 0; k < score.length; k++) {
+//            System.out.print(score[k] + " ");
+//        }
+//        System.out.println();
+//
+//        //처음부터 선언 + 초기화를 한번에 진행
+//        int[] score2 = {10, 20, 30, 40, 50};
+//
+//        //String 형 배열 선언 & 초기화
+//        String[] name = new String[3];
+//        name[0] = "wi";
+//        name[1] = "kim";
+//        name[2] = "park";
+//        for (int j = 0; j < name.length; j++) {
+//            System.out.print(name[j] + " ");
+//        }
+//        System.out.println();
+//
+//
+//        // 내가 만든 배열의 상태를 보기 위해 콘솔에 배열 내용물을 출력
+//        /* System.out.println(score); // 이거는 배열이라는 방의 주소를 불러옴
+//        따라서 for 문을 이용해서 배열 각 원소들을 순회하여 출력하도록 하드코딩하거나
+//        자바에서 제공해주는 Arrays.toString() 메소드를 이용해서 배열을 문자열 형식으로 만들어 출력
+//         */
+//
+//        int[] iArr = {100, 95, 80, 70, 60};
+//
+//        for (int i = 0; i < iArr.length; i++) {
+//            System.out.print(iArr[i] + " ");
+//        }
+//        System.out.println();
+//
+//        System.out.println(Arrays.toString(iArr));
 
-        //처음부터 선언 + 초기화를 한번에 진행
-        int[] score2 = {10, 20, 30, 40, 50};
+        //
+        int[] iArr = {10, 20, 30, 40, 50};
+        int[] iArr2 = new int[iArr.length];
 
-        //String 형 배열 선언 & 초기화
-        String[] name = new String[3];
-        name[0] = "wi";
-        name[1] = "kim";
-        name[2] = "park";
-        for (int j = 0; j < name.length; j++) {
-            System.out.print(name[j] + " ");
-        }
-        System.out.println();
+        //System.arraycopy 복사
+        System.arraycopy(iArr, 0, iArr2, 0, iArr.length);
+        //iArr의 index 0부터 iArr 배열의 길이만큼 iArr2의 0번째 index에 복사
+        /*- 첫 번째 인자 : 복사할 배열
+         * - 두 번째 인자 : 복사를 시작할 배열의 index
+         * - 세 번째 인자 : 붙여넣을 배열
+         * - 네 번째 인자 : 복사된 배열값들이 붙여질 시작 위치
+         * - 다섯 번째 인자 : 지정된 길이만큼 복사*/
 
-
-        // 내가 만든 배열의 상태를 보기 위해 콘솔에 배열 내용물을 출력
-        /* System.out.println(score); // 이거는 배열이라는 방의 주소를 불러옴
-        따라서 for 문을 이용해서 배열 각 원소들을 순회하여 출력하도록 하드코딩하거나
-        자바에서 제공해주는 Arrays.toString() 메소드를 이용해서 배열을 문자열 형식으로 만들어 출력
-         */
-
-        int[] iArr = {100, 95, 80, 70, 60};
-
-        for (int i = 0; i < iArr.length; i++) {
-            System.out.print(iArr[i] + " ");
-        }
-        System.out.println();
 
         System.out.println(Arrays.toString(iArr));
+        System.out.println(Arrays.toString(iArr2));
+
+
+        // for 문보다 아래의 Arrays.copyOf 메소드 이용이 2배는 빠르다고 함
+
+        int[] iArr3 = new int[iArr.length];
+        int[] iArr4 = new int[iArr3.length];
+
+        iArr3 = Arrays.copyOf(iArr, iArr.length);
+        System.out.println(Arrays.toString(iArr3));
+
+        iArr4 = Arrays.copyOf(iArr3, iArr3.length);
+        System.out.println(Arrays.toString(iArr4));
+
+        /*배열 정렬 : Arrays.sort() : 정렬된 배열을 새로 반환하는 것이 아닌, 자기 자신 배열을 정렬시킨다.*/
+
+        int[] nArr = {3, 5, 10, 22, 4, 92};
+        int[] mArr = {90, 23, 33, 1, 3, 44};
+        //오름차순 정렬
+        Arrays.sort(nArr); // 자기 자신 배열을 정리 시킴 (정렬된 배열을 반환하는 것이 아니다.)
+        System.out.println(Arrays.toString(nArr));
+        //내림차순 정렬
+//        Arrays.sort(mArr, Collections.reverseOrder()); //?
+
+        //배열 일부만 정렬
+        Arrays.sort(mArr, 0, 4); // index 4이전인 3까지만 정렬
+        System.out.println(Arrays.toString(mArr));
+
+        //배열 비교 -> 결과를 true or false로 반환
+        String[] sArr1 = {"홍길동", "임꺽정", "박혁거세", "주몽", "고담덕"};
+        String[] sArr2 = {"홍길동", "임꺽정", "박혁거세"};
+        String[] sArr3 = {"홍길동"};
+        String[] sArr4 = {"홍길동"};
+
+        System.out.println("sArr1 == sArr2 : " + Arrays.equals(sArr1, sArr2)); //-> true or false 출력
+        System.out.println("sArr1 == sArr3 : " + Arrays.equals(sArr1, sArr3)); //-> true or false 출력
+        System.out.println("sArr3 == sArr4 : " + Arrays.equals(sArr3, sArr4));
+
+        /* 2차원 배열
+        2차원 배열은 어렵게 생각할 필요 없이 엑셀과 같은 테이블 형태의 데이터를 담기 위해 사용하는 배열
+        테이블 형태의 데이터는 행(row)와 열(column)로 구성됨
+        즉, 행(row)는 1차원 배열이며, 이 행이 여러 개 있으면 곧 열(column)*/
+
+        //1차원 배열은 Arrays.toString 메서드로 루프 없이 한방에 출력한 것처럼
+        //2차원 배열은 Arrays.deeptoString 메서드 사용
+
+        int[][] numArr = {
+                {1, 2, 3, 4},
+                {4, 3,},
+                {4, 3, 2, 1},
+        };
+
+        System.out.println(Arrays.deepToString(numArr));
+
+
 
     }
 }
