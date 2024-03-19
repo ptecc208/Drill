@@ -291,6 +291,9 @@ public class Review01 {
 
         System.out.println(Arrays.deepToString(numArr));
 
+        int a = 0;
+        if (a % 4 == 0)
+
 
 
     }
