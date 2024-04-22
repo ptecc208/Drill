@@ -2,7 +2,7 @@ package com.practice.algo.section01;
 
 import java.util.Scanner;
 
-public class chap01 {
+public class chap01_3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
